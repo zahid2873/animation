@@ -1,3 +1,4 @@
+import 'package:animation/pages/parenting_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
@@ -105,7 +106,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           shape: RoundedRectangleBorder(
                               side: BorderSide(color: Colors.green,width: 2)
                           ),
-                          onPressed: (){}, child: Text("Signup"))
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentingAnimation()));
+                          }, child: Text("Parenting Animation"))
                     ],
                   ),
                 ),
