@@ -1,3 +1,4 @@
+import 'package:animation/pages/transforming_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
@@ -47,7 +48,9 @@ class _ParentingAnimationState extends State<ParentingAnimation> with SingleTick
                             ),
                           ),
                           SizedBox(height: 10,),
-                          ElevatedButton(onPressed: (){}, child: Text("Parenting Animation"))
+                          ElevatedButton(onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>TransformingAnimation()));
+                          }, child: Text("Transform Animation"))
                         ],
                       ),
                     ),
