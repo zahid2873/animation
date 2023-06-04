@@ -50,7 +50,7 @@ class _ParentingAnimationState extends State<ParentingAnimation> with SingleTick
                           SizedBox(height: 10,),
                           ElevatedButton(onPressed: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>TransformingAnimation()));
-                          }, child: Text("Transform Animation"))
+                          }, child: Text(" Go to Transform Animation"))
                         ],
                       ),
                     ),

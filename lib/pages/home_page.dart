@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           ),
                           onPressed: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentingAnimation()));
-                          }, child: Text("Parenting Animation"))
+                          }, child: Text("Go to Parenting Animation"))
                     ],
                   ),
                 ),
