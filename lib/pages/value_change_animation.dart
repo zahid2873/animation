@@ -1,3 +1,4 @@
+import 'package:animation/pages/mixing_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 class ValueChangeAnimation extends StatefulWidget {
@@ -38,7 +39,9 @@ class _ValueChangeAnimationState extends State<ValueChangeAnimation> with Single
             );
           }),
           SizedBox(height: 20,),
-          ElevatedButton(onPressed: (){}, child: Text("Go to "))
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>MixingAnimation()));
+          }, child: Text("Go to MixxingAnimation"))
         ],
       ),
     );
