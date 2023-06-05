@@ -51,8 +51,14 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
                         ),
                         Row(
                           children: [
-                            Text("There ",style: TextStyle(fontSize: 48, fontWeight: FontWeight.w900),),
-                            Text('.',style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.green),),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Text("There ",style: TextStyle(fontSize: 48, fontWeight: FontWeight.w900),),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Text('.',style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.green),),
+                            ),
 
                            ],
                         ),
@@ -113,7 +119,7 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
                           elevation: 7.0,
                           child: GestureDetector(
                             child: Center(
-                              child: Text("Login", style: TextStyle(
+                              child: Text("LOGIN", style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
