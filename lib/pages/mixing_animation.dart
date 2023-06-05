@@ -1,3 +1,4 @@
+import 'package:animation/pages/login_animated_page.dart';
 import 'package:flutter/material.dart';
 
 class MixingAnimation extends StatefulWidget {
@@ -14,8 +15,8 @@ class _MixingAnimationState extends State<MixingAnimation> with SingleTickerProv
   @override
   void initState() {
     // TODO: implement initState
-    animationController = AnimationController(duration: Duration(seconds: 8),vsync: this);
-    animation = Tween(begin: 0.0, end: -0.15)
+    animationController = AnimationController(duration: Duration(seconds: 6),vsync: this);
+    animation = Tween(begin: 0.0, end: -0.20)
         .animate(CurvedAnimation(parent: animationController!, curve: Curves.ease));
     super.initState();
   }
@@ -43,13 +44,16 @@ class _MixingAnimationState extends State<MixingAnimation> with SingleTickerProv
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           ElevatedButton(onPressed: (){}, child: Text("Previous Page")),
-                          ElevatedButton(onPressed: (){}, child: Text("Next Page")),
+                          SizedBox(width: 10,),
+                          ElevatedButton(onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginAnimationPage()));
+                          }, child: Text("Login Page")),
                         ],
                       ),
                     ),
                   ),
                   Center(
-                    child: InkWell(
+                    child: GestureDetector(
                       child: Container(
                         alignment: Alignment.bottomCenter,
                         height: 200,
@@ -69,7 +73,8 @@ class _MixingAnimationState extends State<MixingAnimation> with SingleTickerProv
                         animationController!.reverse();
                       },
                     ),
-                  )
+                  ),
+                  
                 ],
               ),
             );
