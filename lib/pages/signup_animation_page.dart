@@ -1,3 +1,4 @@
+import 'package:animation/pages/alive_ui.dart';
 import 'package:flutter/material.dart';
 
 class SignupAnimationPage extends StatefulWidget {
@@ -102,22 +103,27 @@ class _SignupAnimationPageState extends State<SignupAnimationPage> with SingleTi
                       //           fontFamily: 'Montserrat',decoration: TextDecoration.underline),))
                       // ),
                       SizedBox(height: 40,),
-                      Container(
-                        // padding: EdgeInsets.only(left: 40),
-                        height: 40,
-                        width: double.infinity,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(20),
-                          shadowColor: Colors.greenAccent,
-                          color: Colors.green,
-                          elevation: 7.0,
-                          child: GestureDetector(
-                            child: Center(
-                              child: Text("SIGNUP", style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),),
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>AliveUi()));
+                        },
+                        child: Container(
+                          // padding: EdgeInsets.only(left: 40),
+                          height: 40,
+                          width: double.infinity,
+                          child: Material(
+                            borderRadius: BorderRadius.circular(20),
+                            shadowColor: Colors.greenAccent,
+                            color: Colors.green,
+                            elevation: 7.0,
+                            child: GestureDetector(
+                              child: Center(
+                                child: Text("SIGNUP", style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),),
+                              ),
                             ),
                           ),
                         ),
