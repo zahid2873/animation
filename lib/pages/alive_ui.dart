@@ -1,3 +1,4 @@
+import 'package:animation/pages/flip_animation.dart';
 import 'package:flutter/material.dart';
 
 class AliveUi extends StatefulWidget {
@@ -40,8 +41,15 @@ class _AliveUiState extends State<AliveUi> with SingleTickerProviderStateMixin {
           leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios),color: Colors.black,),
           title: Text('Near By', style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: Colors.black),),
           actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>FlipAnimation()));
+              }, icon: Icon(Icons.arrow_forward_ios,color: Colors.black,)),
+            )
+
             // Padding(padding: EdgeInsets.only(right: 8),
-            //   child: ImageIcon(NetworkImage("https://png.pngtree.com/template/20191108/ourmid/pngtree-nature-beauty-logo-design-template-woman-healthcare-logo-design-image_328612.jpg"),),
+            //   child: CircleAvatar(child: ImageIcon(NetworkImage("https://www.logolynx.com/images/logolynx/83/83ffe24dcc20d2376b640c9d5bbee945.jpeg"),)),
             // ),
           ],
         ),
