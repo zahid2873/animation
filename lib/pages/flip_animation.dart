@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:animation/pages/animated_toggle.dart';
 import 'package:flutter/material.dart';
 
 class FlipAnimation extends StatefulWidget {
@@ -26,6 +27,11 @@ class _FlipAnimationState extends State<FlipAnimation> with SingleTickerProvider
     return Scaffold(
       appBar: AppBar(
         title: Text(" Flip Animation"),
+      actions: [
+        IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>AnimatedTogglePage()));
+        }, icon: Icon(Icons.arrow_forward_ios,color: Colors.black,))
+      ],
       ),
       body: AnimatedBuilder(animation: animationController!, builder: (context, child){
         return Center(
