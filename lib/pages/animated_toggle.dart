@@ -1,3 +1,4 @@
+import 'package:animation/pages/googlemap_effect/googlemapPage.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedTogglePage extends StatefulWidget {
@@ -12,6 +13,14 @@ class _AnimatedTogglePageState extends State<AnimatedTogglePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Toggle"),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>GoogleMapPage()));
+          }, icon: Icon(Icons.arrow_forward_ios))
+        ],
+      ),
       body: Center(
         child: AnimatedContainer(
           duration: Duration(milliseconds: 1000),
