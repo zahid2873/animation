@@ -1,5 +1,8 @@
 import 'package:animation/pages/signup_animation_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
+import 'alive_ui.dart';
 
 class LoginAnimationPage extends StatefulWidget {
   const LoginAnimationPage({Key? key}) : super(key: key);
@@ -12,6 +15,10 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
 
   Animation ? animation, delayedAnimation, muchDelayedAnimation;
   AnimationController ? animationController;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -24,6 +31,25 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
         .animate(CurvedAnimation(parent: animationController!, curve: Interval(0.8,1.0, curve: Curves.fastOutSlowIn)));
     animationController!.forward();
     super.initState();
+  }
+  var data;
+  void login(String email, String password)async{
+    String url = "https://reqres.in/api/login";
+    try{
+      Response response = await post(Uri.parse(url),
+      body: {
+        "email" : email,
+        "password" : password,
+      }
+      );
+      if(response.statusCode==200){
+        print("login successfully");
+        Navigator.push(context,MaterialPageRoute(builder: (context)=>AliveUi()));
+      }
+    }catch(e){
+      print("Somthing wrong $e");
+    }
+
   }
   @override
   Widget build(BuildContext context) {
@@ -73,6 +99,7 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
                   child: Column(
                     children: [
                       TextField(
+                        controller: emailController,
                         decoration: InputDecoration(
                           labelText: 'EMAIL',
                           labelStyle: TextStyle(
@@ -87,6 +114,7 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
                       ),
                       SizedBox(height: 20,),
                       TextField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             labelText: 'PASSWORD',
@@ -108,22 +136,27 @@ class _LoginAnimationPageState extends State<LoginAnimationPage> with SingleTick
                               fontFamily: 'Montserrat',decoration: TextDecoration.underline),))
                       ),
                       SizedBox(height: 40,),
-                      Container(
-                       // padding: EdgeInsets.only(left: 40),
-                        height: 40,
-                        width: double.infinity,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(20),
-                          shadowColor: Colors.greenAccent,
-                          color: Colors.green,
-                          elevation: 7.0,
-                          child: GestureDetector(
-                            child: Center(
-                              child: Text("LOGIN", style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),),
+                      InkWell(
+                        onTap: (){
+                            login(emailController.text.toString(), passwordController.text.toString());
+                        },
+                        child: Container(
+                         // padding: EdgeInsets.only(left: 40),
+                          height: 40,
+                          width: double.infinity,
+                          child: Material(
+                            borderRadius: BorderRadius.circular(20),
+                            shadowColor: Colors.greenAccent,
+                            color: Colors.green,
+                            elevation: 7.0,
+                            child: GestureDetector(
+                              child: Center(
+                                child: Text("LOGIN", style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),),
+                              ),
                             ),
                           ),
                         ),

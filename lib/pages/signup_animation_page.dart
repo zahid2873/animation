@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:animation/pages/alive_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class SignupAnimationPage extends StatefulWidget {
   const SignupAnimationPage({Key? key}) : super(key: key);
@@ -9,6 +12,8 @@ class SignupAnimationPage extends StatefulWidget {
 }
 
 class _SignupAnimationPageState extends State<SignupAnimationPage> with SingleTickerProviderStateMixin {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   Animation ? animation, delayedAnimation;
   AnimationController ? animationController;
   @override
@@ -21,6 +26,23 @@ class _SignupAnimationPageState extends State<SignupAnimationPage> with SingleTi
         .animate(CurvedAnimation(parent: animationController!, curve: Interval(0.5, 1.0,curve: Curves.fastOutSlowIn)));
     animationController!.forward();
     super.initState();
+  }
+    var data;
+  void signin(String email, String password)async{
+    String url = "https://reqres.in/api/register";
+    try{
+      Response response = await post(Uri.parse(url),body:{
+        'email':email,
+        'password':password,
+      });
+      if(response.statusCode ==200){
+        print("Account Created Successfully");
+        data = jsonDecode(response.body);
+        print(data);
+      }
+    }catch (e){
+      print("Somthing is worng $e");
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -52,6 +74,7 @@ class _SignupAnimationPageState extends State<SignupAnimationPage> with SingleTi
                   child: Column(
                     children: [
                       TextField(
+                        controller: emailController,
                         decoration: InputDecoration(
                             labelText: 'EMAIL',
                             labelStyle: TextStyle(
@@ -66,6 +89,7 @@ class _SignupAnimationPageState extends State<SignupAnimationPage> with SingleTi
                       ),
                       SizedBox(height: 20,),
                       TextField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             labelText: 'PASSWORD',
@@ -105,7 +129,9 @@ class _SignupAnimationPageState extends State<SignupAnimationPage> with SingleTi
                       SizedBox(height: 40,),
                       InkWell(
                         onTap: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>AliveUi()));
+                          //Navigator.push(context,MaterialPageRoute(builder: (context)=>AliveUi()));
+                          signin(emailController.text.toString(),passwordController.text.toString());
+                          print("sdsfsdsd");
                         },
                         child: Container(
                           // padding: EdgeInsets.only(left: 40),

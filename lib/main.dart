@@ -1,4 +1,5 @@
 import 'package:animation/pages/flare_animation/flare_home_page.dart';
+import 'package:animation/pages/login_animated_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'pages/home_page.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: FlareHomePage(),
+      home: LoginAnimationPage(),
     );
   }
 }
